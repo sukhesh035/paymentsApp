@@ -26,6 +26,7 @@ export class PaymentsComponent implements OnInit {
       accountBalance: this.accountBalance, 
       newAccountBalance: this.accountBalance - $event?.value?.paymentAmount ?? 0 }
     console.log(resultData)
+    alert("Please check the browser console for output")
   }
 
 

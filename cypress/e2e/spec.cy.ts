@@ -1,0 +1,52 @@
+describe('My First Test', () => {
+  it('Visits the Payments page', () => {
+    cy.visit('/')
+    cy.contains('Payments').click()
+    expect(cy.url().should('include', '/payments'))
+  })
+  it('Visits the About us page', () => {
+    cy.visit('/')
+    cy.contains('About Us').click()
+    expect(cy.url().should('include', '/aboutUs'))
+  })
+  it('Test with all inputs', () => {
+    const stub = cy.stub()  
+    cy.on ('window:alert', stub)
+    cy.visit('/')
+    cy.contains('Payments').click()
+    cy.get('input[id="memberName"]').type('Sukhesh Gopaluni')
+    cy.get('input[id="email"]').type('test@test.com')
+    cy.get('input[id="accountNumber"]').type('23435353234')
+    cy.get('input[id="paymentAmount"]').type('234')
+    cy.contains('Submit').click().then(() => {
+      expect(stub.getCall(0)).to.be.calledWith('Please check the browser console for output')      
+    })  
+  })
+  it('Test with memberName', () => {
+    cy.visit('/')
+    cy.contains('Payments').click()
+    cy.get('input[id="memberName"]').focus()
+    cy.get('input[id="memberName"]').blur()
+    expect(cy.contains('Please enter your name'))
+  })
+  it('Test with email', () => {
+    cy.visit('/')
+    cy.contains('Payments').click()
+    cy.get('input[id="email"]').type('test')
+    expect(cy.contains('Please enter a valid email ***@***.**'))
+  })
+  it('Test with accountNumber', () => {
+    cy.visit('/')
+    cy.contains('Payments').click()
+    cy.get('input[id="accountNumber"]').focus()
+    cy.get('input[id="accountNumber"]').blur()
+    expect(cy.contains('Please enter account number'))
+  })
+  it('Test with paymentAmount', () => {
+    cy.visit('/')
+    cy.contains('Payments').click()
+    cy.get('input[id="paymentAmount"]').focus()
+    cy.get('input[id="paymentAmount"]').blur()
+    expect(cy.contains('Please enter payment and not more than 500'))
+  })
+})

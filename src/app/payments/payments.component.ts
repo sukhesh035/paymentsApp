@@ -7,15 +7,11 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./payments.component.scss']
 })
 export class PaymentsComponent implements OnInit {
-
+  public componentClassPrefix: string = 'paymentsComponent'
+  public accountBalance: number = 500
 
   constructor() {
   }
-
-
-  public componentClassPrefix: string = 'paymentsComponent'
-
-  public accountBalance: number = 500
 
   ngOnInit(): void {
   }

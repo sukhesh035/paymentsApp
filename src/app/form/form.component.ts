@@ -13,7 +13,6 @@ export class FormComponent implements OnInit {
 
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();;
 
-
   constructor(private formBuilder: FormBuilder) {
     this.paymentsForm = formBuilder.group({
       memberName: ['', [Validators.required]],
@@ -25,8 +24,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
   get registerFormControl() {
     return this.paymentsForm.controls;

@@ -8,32 +8,26 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class PaymentsComponent implements OnInit {
 
-  public paymentsForm;
 
-  public memberName = new FormControl('', [
-    Validators.required,
-  ]);
-  constructor(private formBuilder: FormBuilder) {
-    this.paymentsForm = formBuilder.group({
-      memberName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      accountNumber: ['', [Validators.required]],
-      paymentAmount: ['', [Validators.required]],
-    });
+  constructor() {
   }
 
 
   public componentClassPrefix: string = 'paymentsComponent'
 
+  public accountBalance: number = 500
+
   ngOnInit(): void {
   }
 
-  public onSubmit = ()=> {
-    console.log(this.paymentsForm.value)
+  public onSubmit = ($event: any) => {
+    const resultData = { 
+      ...$event.value, 
+      accountBalance: this.accountBalance, 
+      newAccountBalance: this.accountBalance - $event?.value?.paymentAmount ?? 0 }
+    console.log(resultData)
   }
 
-  get registerFormControl() {
-    return this.paymentsForm.controls;
-  }
+
 
 }

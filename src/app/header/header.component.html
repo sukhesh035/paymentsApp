@@ -1,0 +1,11 @@
+<div ngClass="{{componentClassPrefix}}__container">
+    <div ngClass="{{componentClassPrefix}}__img_wrapper">
+        <img src="../../assets/logo.jpeg" alt="" ngClass="{{componentClassPrefix}}__img_logo">
+    </div>
+    <div ngClass="{{componentClassPrefix}}__links_wrapper">
+        <ul>
+            <li><a [routerLink]="['/payments']">Payments</a> </li>
+            <li> <a [routerLink]="['/aboutUs']">About Us</a> </li>
+        </ul>
+    </div>
+</div>

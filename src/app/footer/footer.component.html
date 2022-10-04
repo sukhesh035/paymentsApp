@@ -1,0 +1,8 @@
+<div ngClass="{{componentClassPrefix}}__container">
+    <div ngClass="{{componentClassPrefix}}__body_wrapper">
+        <div ngClass="{{componentClassPrefix}}__list_wrapper" *ngFor="let item of footerData">
+            <div ngClass="{{componentClassPrefix}}__link_header">{{item.label}}</div>
+            <div *ngFor="let link of item.links" ngClass="{{componentClassPrefix}}__link_item">{{link}}</div>
+        </div>
+    </div>
+</div>

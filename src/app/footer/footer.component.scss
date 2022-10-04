@@ -1,0 +1,19 @@
+.footerComponent {
+    &__container {
+        background: black;
+        color: white;
+        padding: 15px;
+    }
+    &__link_header {
+        font-size: 20px;
+    }
+    &__link_item {
+        padding: 10px;
+        cursor: pointer;
+    }
+    &__body_wrapper {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

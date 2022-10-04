@@ -1,0 +1,55 @@
+<div ngClass="{{componentClassPrefix}}__container">
+
+    <form [formGroup]="paymentsForm" (ngSubmit)="submitForm()" novalidate>
+    
+        <p>
+            <label for="memberName" ngClass="{{componentClassPrefix}}__form_label">Name<sup>*</sup> </label>
+            <input type="text" ngClass="{{componentClassPrefix}}__form_input" id="memberName" name="memberName" formControlName="memberName">
+        </p>
+    
+        <div
+            *ngIf="!registerFormControl?.['memberName']?.valid && (registerFormControl?.['memberName']?.dirty ||registerFormControl?.['memberName']?.touched)" ngClass="{{componentClassPrefix}}__form_message">
+            <div [hidden]="!registerFormControl?.['memberName']?.errors?.['required']">
+                Please enter your name
+            </div>
+        </div>
+    
+        <p>
+            <label for="email" ngClass="{{componentClassPrefix}}__form_label">Email</label>
+            <input type="email" id="email" ngClass="{{componentClassPrefix}}__form_input" name="email" formControlName="email">
+        </p>
+    
+        <div
+            *ngIf="!registerFormControl?.['email']?.valid && (registerFormControl?.['email']?.dirty ||registerFormControl?.['email']?.touched)" ngClass="{{componentClassPrefix}}__form_message">
+            <div>
+                Please enter a valid email ***@***.**
+            </div>
+        </div>
+    
+        <p>
+            <label for="accountNumber" ngClass="{{componentClassPrefix}}__form_label">Account Number<sup>*</sup> </label>
+            <input type="number" id="accountNumber" ngClass="{{componentClassPrefix}}__form_input" name="accountNumber" formControlName="accountNumber">
+        </p>
+        <div
+            *ngIf="!registerFormControl?.['accountNumber']?.valid && (registerFormControl?.['accountNumber']?.dirty ||registerFormControl?.['accountNumber']?.touched)" ngClass="{{componentClassPrefix}}__form_message">
+            Please enter account number
+        </div>
+    
+    
+        <p>
+            <label for="paymentAmount" ngClass="{{componentClassPrefix}}__form_label">Payment Amount<sup>*</sup> </label>
+            <input type="number" id="paymentAmount" ngClass="{{componentClassPrefix}}__form_input" name="paymentAmount" formControlName="paymentAmount">
+        </p>
+        <div
+            *ngIf="!registerFormControl?.['paymentAmount']?.valid && (registerFormControl?.['paymentAmount']?.dirty ||registerFormControl?.['paymentAmount']?.touched)" ngClass="{{componentClassPrefix}}__form_message">
+            Please enter payment and not more than {{accountBalance}}
+        </div>
+    
+    
+    
+        <p>
+            <button type="submit" ngClass="{{componentClassPrefix}}__form_submit">Submit</button>
+        </p>
+    
+    </form>
+</div>
